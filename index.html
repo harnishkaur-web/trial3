@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Marking Card — Swift AI Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <div class="topbar">
+    <span class="schema">AAI-E-MC1-S03-CARD01 · MC1 / 1.3 Check Before You Use</span>
+    <span class="badge-mandatory">Mandatory · Element 4</span>
+  </div>
+  <div class="page-label"><span id="pageName">Why this card exists</span><span id="pageNum">1 / 6</span></div>
+  <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:16.6%"></div></div>
+
+  <!-- PAGE 1: Hero intro -->
+  <div class="page active" data-page="0">
+    <div class="hero">
+      <div class="hero-kicker">Prompt Card · 0.5 hours</div>
+      <h1>The Marking Card</h1>
+      <p>One card, two sides. Side one is the 30-second routine you run on every AI answer. Side two is the short list of things that always need a second look — pinned above your workstation, usable in ten seconds flat.</p>
+      <button class="hero-cta" onclick="changePage(1)">
+        Flip through the card
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+
+    <div class="card">
+      <p class="kicker">Why this exists</p>
+      <p>An AI answer can sound completely certain and still be wrong about a date, a number or a name. This card is the habit that catches that — before the answer leaves your hands.</p>
+      <div class="badge-cluster">
+        <div class="mini-badge" style="background:var(--royal);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>
+          Mark
+        </div>
+        <div class="mini-badge" style="background:var(--purple);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18M18 3v18M3 9h18M3 15h18"/></svg>
+          Separate
+        </div>
+        <div class="mini-badge" style="background:var(--teal);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+          Correct
+        </div>
+        <div class="mini-badge" style="background:var(--coral);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+          Pause before send
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 2: Flip card -->
+  <div class="page" data-page="1">
+    <div class="card">
+      <p class="kicker">The card, both sides</p>
+      <h2>Tap the card to flip it</h2>
+      <p>Just like the printed version pinned above your workstation — one side is the routine, the other is the checklist.</p>
+
+      <div class="flip-wrap">
+        <div class="flip-scene">
+          <div class="flip-inner" id="flipInner" onclick="toggleFlip()">
+            <div class="flip-face flip-front">
+              <div class="side-tag">Side 1 · The routine</div>
+              <h3>30 seconds, every time</h3>
+
+              <div class="routine-step">
+                <div class="rnum">1</div>
+                <div class="rtext"><b>Mark</b><span>Underline every fact, figure, date, name and source in the answer.</span></div>
+              </div>
+              <div class="routine-step">
+                <div class="rnum">2</div>
+                <div class="rtext"><b>Separate</b><span>Sort each mark: matches a record, can't confirm, or contradicts a record.</span></div>
+              </div>
+              <div class="routine-step">
+                <div class="rnum">3</div>
+                <div class="rtext"><b>Correct</b><span>Verify, replace, qualify or remove anything not clearly supported.</span></div>
+              </div>
+              <div class="pause-line">⏸ Pause before send: if you can't point to where a mark came from, don't send it yet.</div>
+            </div>
+
+            <div class="flip-face flip-back">
+              <div class="side-tag">Side 2 · The checklist</div>
+              <h3>Always check these five</h3>
+
+              <div class="check-pill">
+                <div class="cicon" style="background:var(--royal);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg></div>
+                <div><b>Facts</b><span>Claims stated as true</span></div>
+              </div>
+              <div class="check-pill">
+                <div class="cicon" style="background:var(--teal);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V10M10 19V5M16 19v-7M22 19H2"/></svg></div>
+                <div><b>Figures</b><span>Numbers, counts, percentages</span></div>
+              </div>
+              <div class="check-pill">
+                <div class="cicon" style="background:var(--purple);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></div>
+                <div><b>Dates</b><span>Days, months, years, durations</span></div>
+              </div>
+              <div class="check-pill">
+                <div class="cicon" style="background:var(--coral);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-6 7-6s7 2.1 7 6"/></svg></div>
+                <div><b>Names</b><span>People, places, organisations</span></div>
+              </div>
+              <div class="check-pill">
+                <div class="cicon" style="background:var(--gold);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg></div>
+                <div><b>Sources</b><span>Where the claim says it came from</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="flip-btn" onclick="toggleFlip()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2.1l4 4-4 4M3 12.6v-2a4 4 0 0 1 4-4h14M7 21.9l-4-4 4-4M21 11.4v2a4 4 0 0 1-4 4H3"/></svg>
+          Flip to the other side
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 3: Accordion with lane dropdown -->
+  <div class="page" data-page="2">
+    <div class="card">
+      <p class="kicker">Side 2, in detail</p>
+      <h2>Why each check matters</h2>
+
+      <div class="lane-select-row">
+        <label for="laneSelect">Show examples for:</label>
+        <select class="lane-select" id="laneSelect" onchange="updateLane()">
+          <option value="iti">ITI workshop</option>
+          <option value="higher">Higher education campus</option>
+        </select>
+      </div>
+
+      <div class="acc-item" data-key="fact">
+        <div class="acc-head" onclick="toggleAcc(this)">
+          <div class="aicon" style="background:var(--royal);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg></div>
+          <div class="atitle">Facts</div>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner">
+          <div class="why">A claim stated as true needs a source before you trust it.</div>
+          <div class="example" data-lane-text="fact"></div>
+        </div></div>
+      </div>
+
+      <div class="acc-item" data-key="figure">
+        <div class="acc-head" onclick="toggleAcc(this)">
+          <div class="aicon" style="background:var(--teal);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V10M10 19V5M16 19v-7M22 19H2"/></svg></div>
+          <div class="atitle">Figures</div>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner">
+          <div class="why">Numbers are easy to get slightly wrong and easy to check.</div>
+          <div class="example" data-lane-text="figure"></div>
+        </div></div>
+      </div>
+
+      <div class="acc-item" data-key="date">
+        <div class="acc-head" onclick="toggleAcc(this)">
+          <div class="aicon" style="background:var(--purple);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></div>
+          <div class="atitle">Dates</div>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner">
+          <div class="why">A vague date ("last Friday") can hide a wrong one.</div>
+          <div class="example" data-lane-text="date"></div>
+        </div></div>
+      </div>
+
+      <div class="acc-item" data-key="name">
+        <div class="acc-head" onclick="toggleAcc(this)">
+          <div class="aicon" style="background:var(--coral);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-6 7-6s7 2.1 7 6"/></svg></div>
+          <div class="atitle">Names</div>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner">
+          <div class="why">An AI tool may guess a name that sounds right but isn't.</div>
+          <div class="example" data-lane-text="name"></div>
+        </div></div>
+      </div>
+
+      <div class="acc-item" data-key="source">
+        <div class="acc-head" onclick="toggleAcc(this)">
+          <div class="aicon" style="background:var(--gold);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg></div>
+          <div class="atitle">Sources</div>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner">
+          <div class="why">"According to policy" means nothing if no policy is shown.</div>
+          <div class="example" data-lane-text="source"></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 4: Quiz -->
+  <div class="page" data-page="3">
+    <div class="card">
+      <p class="kicker">Quick check</p>
+      <h2>Match each phrase to its check type</h2>
+      <p>Pick the right category from the dropdown for each phrase, then check your answers.</p>
+
+      <div class="quiz-item" data-correct="date" id="q1">
+        <div class="qtext">"The inventory was <b>last updated on Tuesday</b>."</div>
+        <select class="quiz-select" onchange="setQuizChoice('q1', this.value)">
+          <option value="">Choose…</option>
+          <option value="fact">Fact</option>
+          <option value="figure">Figure</option>
+          <option value="date">Date</option>
+          <option value="name">Name</option>
+          <option value="source">Source</option>
+        </select>
+      </div>
+
+      <div class="quiz-item" data-correct="figure" id="q2">
+        <div class="qtext">"<b>150 students</b> registered for the workshop."</div>
+        <select class="quiz-select" onchange="setQuizChoice('q2', this.value)">
+          <option value="">Choose…</option>
+          <option value="fact">Fact</option>
+          <option value="figure">Figure</option>
+          <option value="date">Date</option>
+          <option value="name">Name</option>
+          <option value="source">Source</option>
+        </select>
+      </div>
+
+      <div class="quiz-item" data-correct="source" id="q3">
+        <div class="qtext">"<b>As per university guidelines</b>, late entries are not accepted."</div>
+        <select class="quiz-select" onchange="setQuizChoice('q3', this.value)">
+          <option value="">Choose…</option>
+          <option value="fact">Fact</option>
+          <option value="figure">Figure</option>
+          <option value="date">Date</option>
+          <option value="name">Name</option>
+          <option value="source">Source</option>
+        </select>
+      </div>
+
+      <div class="quiz-item" data-correct="name" id="q4">
+        <div class="qtext">Credited to "<b>the lab in-charge</b>" without naming who that is.</div>
+        <select class="quiz-select" onchange="setQuizChoice('q4', this.value)">
+          <option value="">Choose…</option>
+          <option value="fact">Fact</option>
+          <option value="figure">Figure</option>
+          <option value="date">Date</option>
+          <option value="name">Name</option>
+          <option value="source">Source</option>
+        </select>
+      </div>
+
+      <div class="quiz-item" data-correct="fact" id="q5">
+        <div class="qtext">"This machine <b>never needs calibration</b>."</div>
+        <select class="quiz-select" onchange="setQuizChoice('q5', this.value)">
+          <option value="">Choose…</option>
+          <option value="fact">Fact</option>
+          <option value="figure">Figure</option>
+          <option value="date">Date</option>
+          <option value="name">Name</option>
+          <option value="source">Source</option>
+        </select>
+      </div>
+
+      <button class="check-btn" onclick="checkQuiz()">Check my answers</button>
+      <div class="score-banner" id="scoreBanner"></div>
+    </div>
+  </div>
+
+  <!-- PAGE 5: Wall illustration + recap -->
+  <div class="page" data-page="4">
+    <div class="card">
+      <p class="kicker">Pin it up</p>
+      <h2>Above every workstation</h2>
+      <p>This card is designed to be laminated and pinned where you work — readable from arm's length, in a glance.</p>
+
+      <div class="wall-scene">
+        <svg viewBox="0 0 240 200" fill="none">
+          <rect x="10" y="10" width="220" height="180" rx="10" stroke="#C7D0F5" stroke-width="1.75"/>
+          <circle cx="120" cy="26" r="3" fill="#3D5AFE"/>
+          <rect x="45" y="45" width="150" height="110" rx="8" stroke="#3D5AFE" stroke-width="1.75"/>
+          <line x1="60" y1="65" x2="180" y2="65" stroke="#D6DEFF" stroke-width="3" stroke-linecap="round"/>
+          <line x1="60" y1="82" x2="160" y2="82" stroke="#D6DEFF" stroke-width="3" stroke-linecap="round"/>
+          <line x1="60" y1="99" x2="170" y2="99" stroke="#D6DEFF" stroke-width="3" stroke-linecap="round"/>
+          <line x1="60" y1="116" x2="140" y2="116" stroke="#FBB034" stroke-width="3" stroke-linecap="round"/>
+          <line x1="70" y1="172" x2="170" y2="172" stroke="#C7D0F5" stroke-width="1.75" stroke-linecap="round"/>
+          <path d="M55 172v14M185 172v14" stroke="#C7D0F5" stroke-width="1.75" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div class="recap-grid">
+        <div class="recap-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg><span>Mark</span></div>
+        <div class="recap-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18M18 3v18M3 9h18M3 15h18"/></svg><span>Separate</span></div>
+        <div class="recap-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg><span>Correct</span></div>
+        <div class="recap-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span>Pause</span></div>
+        <div class="recap-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Send</span></div>
+      </div>
+
+      <div class="transfer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <p><strong>Try it now.</strong> Pick your last AI answer and run the 30-second routine on it before you use it again.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 6: Closing -->
+  <div class="page" data-page="5">
+    <div class="hero" style="background:linear-gradient(135deg,#3D5AFE 0%, #7B4FE0 100%);">
+      <div class="hero-kicker">You're done</div>
+      <h1>Keep this card close</h1>
+      <p>Every AI task, run: Mark → Separate → Correct → Pause before send. It takes 30 seconds and it's the difference between a checked answer and a guess.</p>
+    </div>
+    <div class="card">
+      <p class="kicker">Card metadata</p>
+      <p>Schema: <b>AAI-E-MC1-S03-CARD01</b> · Mapped PC: <b>4.1–4.5, 5.1–5.4</b> · Non-compensatory: <b>Yes, Element 4</b></p>
+    </div>
+  </div>
+
+  <div class="nav-row">
+    <button class="nav-circle" id="backBtn" onclick="changePage(-1)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="nav-center">Page <b id="navCount">1</b> of 6</div>
+    <button class="nav-circle primary" id="nextBtn" onclick="changePage(1)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+
+  <footer>
+    <span>Swift AI Academy</span>
+    <span>PC 4.1–4.5 · PC 5.1–5.4 · English</span>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
